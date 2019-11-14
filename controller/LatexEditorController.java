@@ -29,7 +29,7 @@ public class LatexEditorController{
 	
 	public LatexEditorController(VersionsManager versionsManager /*,MainWindow mainWindow*/) {
 		//this.mainWindow = mainWindow;
-		CommandFactory commandFactory = new CommandFactory(versionsManager,this);
+		CommandFactory commandFactory = new CommandFactory(versionsManager);
 		
 		commands = new HashMap<String, Command>();
 		String commandsFile = "/home/steve/Documents/commandsFile.txt";

@@ -2,20 +2,17 @@ package controller.commands;
 
 import java.util.HashMap;
 
-import controller.LatexEditorController;
 import model.DocumentManager;
 import model.VersionsManager;
 
 public class CommandFactory {
 	private DocumentManager documentManager;
 	private VersionsManager versionsManager;
-	private LatexEditorController latexEditorController;
 	
 	
-	public CommandFactory(VersionsManager versionsManager,LatexEditorController latexEditorController) {
+	public CommandFactory(VersionsManager versionsManager) {
 		super();
 		this.versionsManager = versionsManager;
-		this.latexEditorController = latexEditorController;
 		documentManager = new DocumentManager();
 	}
 
@@ -28,13 +25,13 @@ public class CommandFactory {
 			return new ChangeVersionsStrategyCommand(versionsManager);
 		}
 		if(type.equals("create")) {
-			return new CreateCommand(documentManager, versionsManager, latexEditorController);
+			return new CreateCommand(documentManager, versionsManager);
 		}
 		if(type.equals("disableVersionsManagement")) {
 			return new DisableVersionsManagementCommand(versionsManager);
 		}
 		if(type.equals("edit")) {
-			return new EditCommand(versionsManager,latexEditorController);
+			return new EditCommand(versionsManager);
 		}
 		if(type.equals("enableVersionsManagement")) {
 			return new EnableVersionsManagementCommand(versionsManager);
@@ -46,7 +43,7 @@ public class CommandFactory {
 			return new RollbackToPreviousVersionCommand(versionsManager);
 		}
 		if(type.equals("save")) {
-			return new SaveCommand(versionsManager,latexEditorController);
+			return new SaveCommand(versionsManager);
 		}
 		return null;
 	}

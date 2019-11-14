@@ -1,21 +1,19 @@
 package controller.commands;
 
-import model.Document;
+import model.DocumentManager;
 import model.VersionsManager;
 
 public class Command {
 	protected VersionsManager versionsManager;
-	protected Document currentDocument;
+	protected DocumentManager documentManager;
 	public Command(VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
 	}
-	public Command(VersionsManager versionsManager,Document currentDocument) {
+	public Command(DocumentManager documentManager,VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
-		this.currentDocument = currentDocument;
+		this.documentManager = documentManager;
 	}
-	//public void execute();
 	public void execute() {
-		// TODO Auto-generated method stub
 		
-	}
+	};
 }

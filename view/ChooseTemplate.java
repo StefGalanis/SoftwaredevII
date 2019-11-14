@@ -14,7 +14,6 @@ public class ChooseTemplate {
 	private JFrame frame;
 	private LatexEditorView latexEditorView;
 	private String previous;
-	private MainWindow mainWindow;
 
 	/**
 	 * Create the application.
@@ -109,11 +108,7 @@ public class ChooseTemplate {
 				}
 
 				latexEditorView.getController().enact("create");
-				
 				MainWindow mainWindow = new MainWindow(latexEditorView);
-				
-				latexEditorView.getController().setMainWindow(mainWindow);
-				
 				frame.dispose();
 			}
 		});
