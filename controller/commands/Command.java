@@ -9,10 +9,12 @@ public class Command {
 	public Command(VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
 	}
+	
 	public Command(DocumentManager documentManager,VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
 		this.documentManager = documentManager;
 	}
+	
 	public void execute() {
 		
 	};
