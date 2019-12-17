@@ -24,15 +24,14 @@ import view.MainWindow;
 public class LatexEditorController{
 	private HashMap<String, Command> commands;
 	private Document currentDocument;
-	private MainWindow mainWindow;
 	
 	
-	public LatexEditorController(VersionsManager versionsManager /*,MainWindow mainWindow*/) {
-		//this.mainWindow = mainWindow;
+	public LatexEditorController(VersionsManager versionsManager) {
+
 		CommandFactory commandFactory = new CommandFactory(versionsManager);
 		
 		commands = new HashMap<String, Command>();
-		String commandsFile = "/home/steve/Documents/commandsFile.txt";
+		String commandsFile = "commandsFile.txt";
 		
 		try {
 			BufferedReader commandsFileReader = new BufferedReader(new FileReader(commandsFile));
@@ -60,7 +59,5 @@ public class LatexEditorController{
 		this.currentDocument = currentDocument;
 	}
 	
-	public void setMainWindow(MainWindow mainWindow) {
-	this.mainWindow = mainWindow;
-	}
+	
 }

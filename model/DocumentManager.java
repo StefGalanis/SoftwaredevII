@@ -15,7 +15,7 @@ public class DocumentManager {
 		Document document = new Document();
 		
 		
-		File[] templateFiles = new File("/home/steve/Documents/templates").listFiles();
+		File[] templateFiles = new File("templates").listFiles();
 		try {
 			for(File file : templateFiles) {
 				 if (file.isFile()) {

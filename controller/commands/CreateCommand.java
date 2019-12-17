@@ -13,9 +13,10 @@ public class CreateCommand extends Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		String type = versionsManager.getType();
+		String type = versionsManager.getLatexEditorView().getType();
 		Document document = documentManager.createDocument(type);
-		versionsManager.setCurrentVersion(document);
+		versionsManager.getLatexEditorView().setCurrentDocument(document);
+		//versionsManager.setCurrentVersion(document);
 	}
 
 }
