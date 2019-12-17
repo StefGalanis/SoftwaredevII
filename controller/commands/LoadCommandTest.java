@@ -16,8 +16,8 @@ class LoadCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, versionsManager);
-	private LoadCommand loadCommand = new LoadCommand(versionsManager);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
+	private LoadCommand loadCommand = new LoadCommand(latexEditorView);
 
 	@Test
 	void test() {

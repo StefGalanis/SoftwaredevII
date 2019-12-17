@@ -22,7 +22,7 @@ public class LatexEditorView {
 	}
 	public void setVersionsManager(VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
-	}
+	}//possible remove of method
 	public String getStrategy() {
 		return strategy;
 	}
@@ -46,6 +46,7 @@ public class LatexEditorView {
 	}
 	public void setCurrentDocument(Document currentDocument) {
 		this.currentDocument = currentDocument;
+		this.text = currentDocument.getContents();//evala grammh edw
 	}
 	public String getType() {
 		return type;

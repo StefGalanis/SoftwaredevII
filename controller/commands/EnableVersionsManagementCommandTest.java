@@ -15,8 +15,8 @@ class EnableVersionsManagementCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, versionsManager);
-	private EditCommand editCommand = new EditCommand(versionsManager);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
+	private EditCommand editCommand = new EditCommand(latexEditorView);
 	private EnableVersionsManagementCommand enableCommand = new EnableVersionsManagementCommand(versionsManager);
 
 	@Test

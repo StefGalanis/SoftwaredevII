@@ -12,8 +12,8 @@ import view.LatexEditorView;
 class CreateCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
-	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, versionsManager);
+	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);//possible remove field
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
 
 	@Test
 	void test1() {
@@ -146,7 +146,6 @@ class CreateCommandTest {
 
 				"\\end{document}\n";
 		String actualContents = latexEditorView.getCurrentDocument().getContents();
-		
 		assertEquals(contents, actualContents);
 	}
 	

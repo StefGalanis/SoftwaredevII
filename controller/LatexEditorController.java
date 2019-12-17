@@ -26,9 +26,9 @@ public class LatexEditorController{
 	private Document currentDocument;
 	
 	
-	public LatexEditorController(VersionsManager versionsManager) {
+	public LatexEditorController(VersionsManager versionsManager,LatexEditorView latexEditorView) {
 
-		CommandFactory commandFactory = new CommandFactory(versionsManager);
+		CommandFactory commandFactory = new CommandFactory(versionsManager,latexEditorView);
 		
 		commands = new HashMap<String, Command>();
 		String commandsFile = "commandsFile.txt";

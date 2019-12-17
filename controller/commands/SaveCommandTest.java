@@ -16,8 +16,8 @@ class SaveCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, versionsManager);
-	private SaveCommand saveCommand = new SaveCommand(versionsManager);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
+	private SaveCommand saveCommand = new SaveCommand(latexEditorView);
 
 	@Test
 	void test() {

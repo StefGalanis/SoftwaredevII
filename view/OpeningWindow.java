@@ -42,7 +42,7 @@ public class OpeningWindow {
 		VersionsStrategy versionsStrategy = new VolatileVersionsStrategy();
 		latexEditorView = new LatexEditorView();
 		VersionsManager versionsManager = new VersionsManager(versionsStrategy, latexEditorView);
-		LatexEditorController controller = new LatexEditorController(versionsManager);
+		LatexEditorController controller = new LatexEditorController(versionsManager,latexEditorView);
 		latexEditorView.setController(controller);
 		latexEditorView.setVersionsManager(versionsManager);
 		initialize();

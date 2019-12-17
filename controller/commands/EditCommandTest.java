@@ -12,18 +12,19 @@ class EditCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, versionsManager);
-	private EditCommand editCommand = new EditCommand(versionsManager);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView,versionsManager);
+	private EditCommand editCommand = new EditCommand(latexEditorView);
 
 	@Test
 	void test() {
 		latexEditorView.setType("articleTemplate");
 		createCommand.execute();
-		
+		//System.out.println(latexEditorView.getText());
 		latexEditorView.setText("test edit contents\n");
+		//System.out.println(latexEditorView.getText());
 		editCommand.execute();
 		String actualContents = latexEditorView.getCurrentDocument().getContents();
-		
+		//System.out.println(actualContents);
 		assertEquals("test edit contents\n", actualContents);
 	}
 
