@@ -9,6 +9,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextPane;
 
 import controller.LatexEditorController;
+import controller.commands.AddLatexCommand;
 import model.Document;
 
 import javax.swing.JEditorPane;
@@ -249,7 +250,8 @@ public class MainWindow {
 		JMenuItem addFigure = new JMenuItem("Add figure");
 		addFigure.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("figure");
+				setCommandExecutionData("figure");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		mnCommands.add(addFigure);
@@ -300,6 +302,7 @@ public class MainWindow {
 		mntmDisable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				latexEditorController.enact("disableVersionsManagement");
+				latexEditorController.getEditorPane();
 			}
 		});
 		mnStrategy.add(mntmDisable);
@@ -320,5 +323,10 @@ public class MainWindow {
 		scrollPane.setViewportView(editorPane);
 		
 		editorPane.setText(latexEditorController.getCurrentDocument().getContents());
+	}
+	
+	public void setCommandExecutionData(String addLatexCommandType) {
+		latexEditorController.setAddLatexCommandType(addLatexCommandType);
+		latexEditorController.setEditorPane(this.editorPane);
 	}
 }

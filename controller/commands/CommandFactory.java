@@ -29,7 +29,7 @@ public class CommandFactory {
 
 	public Command createCommand(String type) {
 		if(type.equals("addLatex")) {
-			return new AddLatexCommand(latexEditorView);
+			return new AddLatexCommand(latexEditorController);
 		}
 		if(type.equals("changeVersionsStrategy")) {
 			return new ChangeVersionsStrategyCommand(versionsManager);

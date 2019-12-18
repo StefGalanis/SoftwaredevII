@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
 
+import javax.swing.JEditorPane;
+
 import controller.commands.AddLatexCommand;
 import controller.commands.ChangeVersionsStrategyCommand;
 import controller.commands.Command;
@@ -29,9 +31,27 @@ public class LatexEditorController{
 	private String filename;
 	private String strategy;
 	private VersionsManager versionsManager;
+	private String addLatexCommandType;
+	private JEditorPane editorPane;
 	
 	
 	
+	public JEditorPane getEditorPane() {
+		return editorPane;
+	}
+
+	public void setEditorPane(JEditorPane editorPane) {
+		this.editorPane = editorPane;
+	}
+
+	public String getAddLatexCommandType() {
+		return addLatexCommandType;
+	}
+
+	public void setAddLatexCommandType(String addLatexCommandType) {
+		this.addLatexCommandType = addLatexCommandType;
+	}
+
 	public LatexEditorController(VersionsManager versionsManager,LatexEditorView latexEditorView) {
 		
 		this.currentDocument = new Document();
