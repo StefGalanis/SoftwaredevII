@@ -19,41 +19,41 @@ public class LatexEditorView {
 	
 	public VersionsManager getVersionsManager() {
 		return versionsManager;
-	}
+	}//possible remove of method
 	public void setVersionsManager(VersionsManager versionsManager) {
 		this.versionsManager = versionsManager;
 	}//possible remove of method
 	public String getStrategy() {
 		return strategy;
-	}
+	}//possible remove of method
 	public void setStrategy(String strategy) {
 		this.strategy = strategy;
-	}
+	}//possible remove of method
 	public String getText() {
 		return text;
-	}
+	}//possible remove of method
 	public void setText(String text) {
 		this.text = text;
-	}
+	}//possible remove of method
 	public LatexEditorController getController() {
 		return controller;
-	}
+	}//possible remove of method
 	public void setController(LatexEditorController controller) {
 		this.controller = controller;
-	}
+	}//possible remove of method
 	public Document getCurrentDocument() {
 		return currentDocument;
-	}
+	}//possible remove of method
 	public void setCurrentDocument(Document currentDocument) {
 		this.currentDocument = currentDocument;
 		this.text = currentDocument.getContents();//evala grammh edw
-	}
+	}//possible remove of method
 	public String getType() {
 		return type;
-	}
+	}//possible remove of method
 	public void setType(String type) {
 		this.type = type;
-	}
+	}//possible remove of method
 	public void saveContents() {
 		// TODO Auto-generated method stub
 		if(versionsManager.isEnabled()) {
@@ -65,13 +65,13 @@ public class LatexEditorView {
 	public void saveToFile() {
 		// TODO Auto-generated method stub
 		currentDocument.save(filename);
-	}
+	}//possible remove of method
 	public String getFilename() {
 		return filename;
-	}
+	}//possible remove of method
 	public void setFilename(String filename) {
 		this.filename = filename;
-	}
+	}//possible remove of method
 	public void loadFromFile() {
 		// TODO Auto-generated method stub
 		String fileContents = "";

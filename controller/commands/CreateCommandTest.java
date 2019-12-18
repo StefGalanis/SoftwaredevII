@@ -13,11 +13,12 @@ class CreateCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);//possible remove field
-	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
+	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager,latexEditorView);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController, versionsManager);
 
 	@Test
 	void test1() {
-		latexEditorView.setType("articleTemplate");
+		latexEditorController.setType("articleTemplate");
 		createCommand.execute();
 		String contents = "\\documentclass[11pt,twocolumn,a4paper]{article}\n\n"+
 
@@ -39,14 +40,14 @@ class CreateCommandTest {
 				"\\section*{References}\n\n"+
 
 				"\\end{document}\n";
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 
 	@Test
 	void test2() {
-		latexEditorView.setType("letterTemplate");
+		latexEditorController.setType("letterTemplate");
 		createCommand.execute();
 		String contents = "\\documentclass{letter}\n"+
 				"\\usepackage{hyperref}\n"+
@@ -70,14 +71,14 @@ class CreateCommandTest {
 
 				"\\end{letter}\n"+
 				"\\end{document}\n";
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 	
 	@Test
 	void test3() {
-		latexEditorView.setType("reportTemplate");
+		latexEditorController.setType("reportTemplate");
 		createCommand.execute();
 		String contents = "\\documentclass[11pt,a4paper]{report}\n\n"+
 
@@ -105,13 +106,13 @@ class CreateCommandTest {
 				"\\chapter*{References}\n\n"+
 
 				"\\end{document}\n";
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}
 	@Test
 	void test4() {
-		latexEditorView.setType("bookTemplate");
+		latexEditorController.setType("bookTemplate");
 		createCommand.execute();
 		String contents = "\\documentclass[11pt,a4paper]{book}\n\n"+
 
@@ -145,16 +146,16 @@ class CreateCommandTest {
 				"\\chapter{Last note}\n\n"+
 
 				"\\end{document}\n";
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		assertEquals(contents, actualContents);
 	}
 	
 	@Test
 	void test5() {
-		latexEditorView.setType("emptyTemplate");
+		latexEditorController.setType("emptyTemplate");
 		createCommand.execute();
 		String contents = "";
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		
 		assertEquals(contents, actualContents);
 	}

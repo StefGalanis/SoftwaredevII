@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
+import controller.LatexEditorController;
 import model.DocumentManager;
 import model.VersionsManager;
 import view.LatexEditorView;
@@ -16,14 +17,15 @@ class LoadCommandTest {
 	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
-	private LoadCommand loadCommand = new LoadCommand(latexEditorView);
+	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager, latexEditorView);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController , versionsManager);
+	private LoadCommand loadCommand = new LoadCommand(latexEditorController);
 
 	@Test
 	void test() {
-		latexEditorView.setType("articleTemplate");
+		latexEditorController.setType("articleTemplate");
 		createCommand.execute();
-		latexEditorView.setFilename("test.tex");
+		latexEditorController.setFilename("test.tex");
 		loadCommand.execute();
 		
 		String fileContents = "";
@@ -36,7 +38,7 @@ class LoadCommandTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		
 		assertEquals(fileContents, actualContents);
 	}

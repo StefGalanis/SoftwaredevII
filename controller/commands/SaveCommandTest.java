@@ -8,22 +8,24 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
+import controller.LatexEditorController;
 import model.DocumentManager;
 import model.VersionsManager;
 import view.LatexEditorView;
 
 class SaveCommandTest {
-	private LatexEditorView latexEditorView = new LatexEditorView();
+	private LatexEditorView latexEditorView = new LatexEditorView();//possible remove
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
-	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorView, versionsManager);
-	private SaveCommand saveCommand = new SaveCommand(latexEditorView);
+	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager,latexEditorView);
+	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController, versionsManager);
+	private SaveCommand saveCommand = new SaveCommand(latexEditorController);
 
 	@Test
 	void test() {
-		latexEditorView.setType("articleTemplate");
+		latexEditorController.setType("articleTemplate");
 		createCommand.execute();
-		latexEditorView.setFilename("test.tex");
+		latexEditorController.setFilename("test.tex");
 		saveCommand.execute();
 		
 		String fileContents = "";
@@ -36,7 +38,7 @@ class SaveCommandTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String actualContents = latexEditorView.getCurrentDocument().getContents();
+		String actualContents = latexEditorController.getCurrentDocument().getContents();
 		
 		assertEquals(fileContents, actualContents);
 	}

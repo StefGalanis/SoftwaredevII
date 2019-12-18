@@ -11,11 +11,20 @@ public class VersionsManager {
 	private boolean enabled;
 	private VersionsStrategy strategy;
 	private LatexEditorView latexEditorView;
+	private String strategyType;
 
 	
 	public VersionsManager(VersionsStrategy versionsStrategy, LatexEditorView latexEditorView) {
 		this.strategy = versionsStrategy;
 		this.latexEditorView = latexEditorView;
+	}
+	
+	public void setStrategyType(String strategyType) {
+		this.strategyType = strategyType;
+	}
+	
+	public String getStrategyType() {
+		return strategyType;
 	}
 	
 	public LatexEditorView getLatexEditorView() {
@@ -40,7 +49,7 @@ public class VersionsManager {
 
 	public void enableStrategy() {
 		// TODO Auto-generated method stub
-		String strategyType = latexEditorView.getStrategy();
+		//String strategyType = latexEditorView.getStrategy();
 		if(strategyType.equals("volatile") && strategy instanceof VolatileVersionsStrategy) {
 			enable();
 		}
@@ -64,7 +73,7 @@ public class VersionsManager {
 
 	public void changeStrategy() {
 		// TODO Auto-generated method stub
-		String strategyType = latexEditorView.getStrategy();
+		//String strategyType = latexEditorView.getStrategy();
 		if(strategyType.equals("stable") && strategy instanceof VolatileVersionsStrategy) {
 			VersionsStrategy newStrategy = new StableVersionsStrategy();
 			newStrategy.setEntireHistory(strategy.getEntireHistory());
@@ -84,19 +93,22 @@ public class VersionsManager {
 		strategy.putVersion(document);
 	}
 
-	public void rollback() {
+	public Document rollback() {
 		// TODO Auto-generated method stub
 		if(isEnabled() == false) {
 			JOptionPane.showMessageDialog(null, "Strategy is not enabled", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
+			return null;
 		}
 		else {
 			Document doc = strategy.getVersion();
 			if(doc == null) {
 				JOptionPane.showMessageDialog(null, "No version available", "InfoBox", JOptionPane.INFORMATION_MESSAGE);
+				return null;
 			}
 			else {
 				strategy.removeVersion();
-				latexEditorView.setCurrentDocument(doc);
+				//latexEditorView.setCurrentDocument(doc);
+				return doc;
 			}
 		}
 		

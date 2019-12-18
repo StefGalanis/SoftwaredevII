@@ -1,5 +1,6 @@
 package controller.commands;
 
+import controller.LatexEditorController;
 import model.Document;
 import model.DocumentManager;
 import model.VersionsManager;
@@ -7,17 +8,20 @@ import view.LatexEditorView;
 
 public class CreateCommand extends Command {
 	
-	public CreateCommand(DocumentManager documentManager, LatexEditorView latexEditorView,VersionsManager versionsManager) {
-		super(documentManager,latexEditorView,versionsManager);
+	public CreateCommand(DocumentManager documentManager, LatexEditorController latexEditorController,VersionsManager versionsManager) {
+		super(documentManager,latexEditorController,versionsManager);
 	}
 
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		String type = latexEditorView.getType();
+		String type = latexEditorController.getType();
+		//System.out.println(type);
+		//System.exit(1);
 		Document document = documentManager.createDocument(type);
-		latexEditorView.setCurrentDocument(document);
-		latexEditorView.setVersionsManager(versionsManager);
+		latexEditorController.setCurrentDocument(document);
+		//latexEditorController.setCurrentVersion(document);
+		//latexEditorController.setVersionsManager(versionsManager);//going to add later
 		//versionsManager.setCurrentVersion(document); // possible remove of this line
 	}
 

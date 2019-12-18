@@ -1,13 +1,15 @@
 package controller.commands;
 
+import controller.LatexEditorController;
+import model.Document;
 import model.VersionsManager;//possible remove import
 import view.LatexEditorView;
 
 public class EditCommand extends Command {
 	
 	
-	public EditCommand(LatexEditorView latexEditorView) {
-		super(latexEditorView);
+	public EditCommand(LatexEditorController latexEditorController, Document currentDocument) {
+		super(latexEditorController,currentDocument);
 	}
 
 
@@ -15,8 +17,18 @@ public class EditCommand extends Command {
 	public void execute() {
 		// TODO Auto-generated method stub
 		//System.out.println(latexEditorView.getText());
-		latexEditorView.saveContents();
-		System.out.println(latexEditorView.getCurrentDocument().getContents());
+		saveContents();
+		//System.out.println(latexEditorView.getCurrentDocument().getContents());
 	}
 
+	public void saveContents() {
+		// TODO Auto-generated method stub
+		if(latexEditorController.isVersionsManagerEnabled()) {
+			latexEditorController.setCurrentVersion(latexEditorController.getCurrentDocument());
+			System.out.println(latexEditorController.getCurrentDocument().getContents());
+			latexEditorController.getCurrentDocument().changeVersion();
+		}
+		latexEditorController.setContents(latexEditorController.getText());
+	}
+	
 }

@@ -3,6 +3,7 @@ package controller.commands;
 import java.util.HashMap;
 
 import controller.LatexEditorController;
+import model.Document;
 import model.DocumentManager;
 import model.VersionsManager;
 import view.LatexEditorView;
@@ -10,13 +11,18 @@ import view.LatexEditorView;
 public class CommandFactory {
 	private DocumentManager documentManager;
 	private VersionsManager versionsManager;
-	private LatexEditorView latexEditorView;
+	private LatexEditorController latexEditorController;
+	private LatexEditorView latexEditorView;//possible remove
+	private Document currentDocument;//possible remove
 	
 	
-	public CommandFactory(VersionsManager versionsManager,LatexEditorView latexEditorView) {
+	public CommandFactory(VersionsManager versionsManager,LatexEditorController latexEditorController,
+			Document currentDocument) {
 		super();
 		this.versionsManager = versionsManager;
-		this.latexEditorView = latexEditorView;
+		this.latexEditorController = latexEditorController;
+		this.latexEditorView = latexEditorView;//possible remove
+		this.currentDocument = currentDocument;//possible remove
 		documentManager = new DocumentManager();
 	}
 
@@ -29,25 +35,25 @@ public class CommandFactory {
 			return new ChangeVersionsStrategyCommand(versionsManager);
 		}
 		if(type.equals("create")) {
-			return new CreateCommand(documentManager, latexEditorView,versionsManager);
+			return new CreateCommand(documentManager,latexEditorController,versionsManager);
 		}
 		if(type.equals("disableVersionsManagement")) {
 			return new DisableVersionsManagementCommand(versionsManager);
 		}
 		if(type.equals("edit")) {
-			return new EditCommand(latexEditorView);
+			return new EditCommand(latexEditorController,currentDocument);
 		}
 		if(type.equals("enableVersionsManagement")) {
 			return new EnableVersionsManagementCommand(versionsManager);
 		}
 		if(type.equals("load")) {
-			return new LoadCommand(latexEditorView);
+			return new LoadCommand(latexEditorController);
 		}
 		if(type.equals("rollbackToPreviousVersion")) {
-			return new RollbackToPreviousVersionCommand(versionsManager);
+			return new RollbackToPreviousVersionCommand(versionsManager,latexEditorController);
 		}
 		if(type.equals("save")) {
-			return new SaveCommand(latexEditorView);
+			return new SaveCommand(latexEditorController);
 		}
 		return null;
 	}
