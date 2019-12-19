@@ -20,7 +20,6 @@ import controller.commands.RollbackToPreviousVersionCommand;
 import controller.commands.SaveCommand;
 import model.Document;
 import model.VersionsManager;
-import view.LatexEditorView;
 import view.MainWindow;
 
 public class LatexEditorController{
@@ -52,7 +51,7 @@ public class LatexEditorController{
 		this.addLatexCommandType = addLatexCommandType;
 	}
 
-	public LatexEditorController(VersionsManager versionsManager,LatexEditorView latexEditorView) {
+	public LatexEditorController(VersionsManager versionsManager) {
 		
 		this.currentDocument = new Document();
 		this.versionsManager = versionsManager;

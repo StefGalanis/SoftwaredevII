@@ -1,16 +1,12 @@
 package controller.commands;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.util.HashMap;
 
 import javax.swing.JEditorPane;
 
 import controller.LatexEditorController;
-import model.Document;
-import model.VersionsManager;
 
 public class AddLatexCommand extends Command  {
 	

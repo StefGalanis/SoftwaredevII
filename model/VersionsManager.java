@@ -5,18 +5,15 @@ import javax.swing.JOptionPane;
 import model.strategies.StableVersionsStrategy;
 import model.strategies.VersionsStrategy;
 import model.strategies.VolatileVersionsStrategy;
-import view.LatexEditorView;
 
 public class VersionsManager {
 	private boolean enabled;
 	private VersionsStrategy strategy;
-	private LatexEditorView latexEditorView;
 	private String strategyType;
 
 	
-	public VersionsManager(VersionsStrategy versionsStrategy, LatexEditorView latexEditorView) {
+	public VersionsManager(VersionsStrategy versionsStrategy) {
 		this.strategy = versionsStrategy;
-		this.latexEditorView = latexEditorView;
 	}
 	
 	public void setStrategyType(String strategyType) {
@@ -25,10 +22,6 @@ public class VersionsManager {
 	
 	public String getStrategyType() {
 		return strategyType;
-	}
-	
-	public LatexEditorView getLatexEditorView() {
-		return latexEditorView;
 	}
 	
 	public boolean isEnabled() {
@@ -49,7 +42,6 @@ public class VersionsManager {
 
 	public void enableStrategy() {
 		// TODO Auto-generated method stub
-		//String strategyType = latexEditorView.getStrategy();
 		if(strategyType.equals("volatile") && strategy instanceof VolatileVersionsStrategy) {
 			enable();
 		}
@@ -73,7 +65,6 @@ public class VersionsManager {
 
 	public void changeStrategy() {
 		// TODO Auto-generated method stub
-		//String strategyType = latexEditorView.getStrategy();
 		if(strategyType.equals("stable") && strategy instanceof VolatileVersionsStrategy) {
 			VersionsStrategy newStrategy = new StableVersionsStrategy();
 			newStrategy.setEntireHistory(strategy.getEntireHistory());
@@ -107,7 +98,6 @@ public class VersionsManager {
 			}
 			else {
 				strategy.removeVersion();
-				//latexEditorView.setCurrentDocument(doc);
 				return doc;
 			}
 		}

@@ -1,9 +1,6 @@
 package controller.commands;
 
 import controller.LatexEditorController;
-import model.Document;
-import model.VersionsManager;//possible remove of import
-import view.LatexEditorView;
 
 public class SaveCommand extends Command {
 	

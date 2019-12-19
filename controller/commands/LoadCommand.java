@@ -7,7 +7,6 @@ import java.util.Scanner;
 import controller.LatexEditorController;
 import model.Document;
 import model.VersionsManager;
-import view.LatexEditorView;
 
 public class LoadCommand extends Command {
 	

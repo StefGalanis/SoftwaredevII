@@ -19,7 +19,6 @@ public class OpeningWindow {
 
 	private JFrame frame;
 	private LatexEditorController controller;
-	private LatexEditorView latexEditorView;
 	/**
 	 * Launch the application.
 	 */
@@ -41,12 +40,9 @@ public class OpeningWindow {
 	 */
 	public OpeningWindow() {
 		VersionsStrategy versionsStrategy = new VolatileVersionsStrategy();
-		latexEditorView = new LatexEditorView();
-		VersionsManager versionsManager = new VersionsManager(versionsStrategy, latexEditorView);
-		LatexEditorController controller = new LatexEditorController(versionsManager,latexEditorView);
+		VersionsManager versionsManager = new VersionsManager(versionsStrategy);
+		LatexEditorController controller = new LatexEditorController(versionsManager);
 		this.controller = controller;
-		latexEditorView.setController(controller);
-		latexEditorView.setVersionsManager(versionsManager);
 		initialize();
 		frame.setVisible(true);
 	}

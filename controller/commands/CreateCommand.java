@@ -4,7 +4,6 @@ import controller.LatexEditorController;
 import model.Document;
 import model.DocumentManager;
 import model.VersionsManager;
-import view.LatexEditorView;
 
 public class CreateCommand extends Command {
 	

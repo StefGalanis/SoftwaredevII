@@ -1,20 +1,20 @@
 package controller.commands;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import controller.LatexEditorController;
 import model.DocumentManager;
 import model.VersionsManager;
 import model.strategies.StableVersionsStrategy;
 import model.strategies.VersionsStrategy;
 import model.strategies.VolatileVersionsStrategy;
-import view.LatexEditorView;
 
 class ChangeVersionsStrategyCommandTest {
-	private LatexEditorView latexEditorView = new LatexEditorView();
 	private DocumentManager documentManager = new DocumentManager();
-	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);
+	private VersionsManager versionsManager = new VersionsManager(null);
+	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager);
 	private ChangeVersionsStrategyCommand changeCommand = new ChangeVersionsStrategyCommand(versionsManager);
 	
 	@Test
@@ -22,9 +22,9 @@ class ChangeVersionsStrategyCommandTest {
 		VersionsStrategy strategy = new VolatileVersionsStrategy();
 		versionsManager.setStrategy(strategy);
 		
-		latexEditorView.setType("articleTemplate");
-		latexEditorView.setVersionsManager(versionsManager);
-		latexEditorView.setStrategy("stable");
+		latexEditorController.setType("articleTemplate");
+		latexEditorController.setVersionsManager(versionsManager);
+		latexEditorController.setStrategy("stable");
 		changeCommand.execute();
 		
 		String test = "test ok";
@@ -39,9 +39,9 @@ class ChangeVersionsStrategyCommandTest {
 		VersionsStrategy strategy = new StableVersionsStrategy();
 		versionsManager.setStrategy(strategy);
 		
-		latexEditorView.setType("articleTemplate");
-		latexEditorView.setVersionsManager(versionsManager);
-		latexEditorView.setStrategy("volatile");
+		latexEditorController.setType("articleTemplate");
+		latexEditorController.setVersionsManager(versionsManager);
+		latexEditorController.setStrategy("volatile");
 		changeCommand.execute();
 		
 		String test = "test ok";

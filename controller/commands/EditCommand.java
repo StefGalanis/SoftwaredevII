@@ -2,8 +2,6 @@ package controller.commands;
 
 import controller.LatexEditorController;
 import model.Document;
-import model.VersionsManager;//possible remove import
-import view.LatexEditorView;
 
 public class EditCommand extends Command {
 	

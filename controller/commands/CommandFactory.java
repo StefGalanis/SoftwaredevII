@@ -1,18 +1,14 @@
 package controller.commands;
 
-import java.util.HashMap;
-
 import controller.LatexEditorController;
 import model.Document;
 import model.DocumentManager;
 import model.VersionsManager;
-import view.LatexEditorView;
 
 public class CommandFactory {
 	private DocumentManager documentManager;
 	private VersionsManager versionsManager;
 	private LatexEditorController latexEditorController;
-	private LatexEditorView latexEditorView;//possible remove
 	private Document currentDocument;//possible remove
 	
 	
@@ -21,7 +17,6 @@ public class CommandFactory {
 		super();
 		this.versionsManager = versionsManager;
 		this.latexEditorController = latexEditorController;
-		this.latexEditorView = latexEditorView;//possible remove
 		this.currentDocument = currentDocument;//possible remove
 		documentManager = new DocumentManager();
 	}

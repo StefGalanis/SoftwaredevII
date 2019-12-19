@@ -1,19 +1,18 @@
 package controller.commands;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 import controller.LatexEditorController;
 import model.DocumentManager;
 import model.VersionsManager;
-import view.LatexEditorView;
 
 class CreateCommandTest {
-	private LatexEditorView latexEditorView = new LatexEditorView();
+
 	private DocumentManager documentManager = new DocumentManager();
-	private VersionsManager versionsManager = new VersionsManager(null, latexEditorView);//possible remove field
-	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager,latexEditorView);
+	private VersionsManager versionsManager = new VersionsManager(null);//possible remove field
+	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager);
 	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController, versionsManager);
 
 	@Test
