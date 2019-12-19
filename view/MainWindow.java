@@ -9,9 +9,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextPane;
 
 import controller.LatexEditorController;
-import controller.commands.AddLatexCommand;
-import model.Document;
-
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 
@@ -94,7 +91,7 @@ public class MainWindow {
 					if(latexEditorController.getType().equals("articleTemplate")) {
 						addChapter.setEnabled(false);
 					}
-					editorPane.setText(latexEditorController.getCurrentDocument().getContents());
+					editorPane.setText(latexEditorController.getDocumentContents());
 				}
 			}
 		});
@@ -262,8 +259,7 @@ public class MainWindow {
 		mntmRollback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				latexEditorController.enact("rollbackToPreviousVersion");
-				Document doc = latexEditorController.getCurrentDocument();
-				editorPane.setText(doc.getContents());
+				editorPane.setText(latexEditorController.getDocumentContents());
 			}
 		});
 		mnStrategy.add(mntmRollback);
@@ -273,7 +269,7 @@ public class MainWindow {
 		frame.getContentPane().add(scrollPane);
 		scrollPane.setViewportView(editorPane);
 		
-		editorPane.setText(latexEditorController.getCurrentDocument().getContents());
+		editorPane.setText(latexEditorController.getDocumentContents());
 	}
 	
 	public void setCommandExecutionData(String addLatexCommandType) {

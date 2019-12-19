@@ -20,6 +20,8 @@ import controller.commands.RollbackToPreviousVersionCommand;
 import controller.commands.SaveCommand;
 import model.Document;
 import model.VersionsManager;
+import model.strategies.VersionsStrategy;
+import model.strategies.VolatileVersionsStrategy;
 import view.MainWindow;
 
 public class LatexEditorController{
@@ -51,7 +53,10 @@ public class LatexEditorController{
 		this.addLatexCommandType = addLatexCommandType;
 	}
 
-	public LatexEditorController(VersionsManager versionsManager) {
+	public LatexEditorController() {
+		
+		VersionsStrategy versionsStrategy = new VolatileVersionsStrategy();
+		VersionsManager versionsManager = new VersionsManager(versionsStrategy);
 		
 		this.currentDocument = new Document();
 		this.versionsManager = versionsManager;
@@ -142,6 +147,16 @@ public class LatexEditorController{
 	public void setVersionsManager(VersionsManager versionsManager2) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getDocumentContents() {
+		// TODO Auto-generated method stub
+		return currentDocument.getContents();
+	}
+	
+	public void setDocumentContents(String contents) {
+		// TODO Auto-generated method stub
+		currentDocument.setContents(contents);
 	}
 
 }

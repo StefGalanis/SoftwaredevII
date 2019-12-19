@@ -14,7 +14,7 @@ import model.strategies.VolatileVersionsStrategy;
 class ChangeVersionsStrategyCommandTest {
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null);
-	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager);
+	private LatexEditorController latexEditorController = new LatexEditorController();
 	private ChangeVersionsStrategyCommand changeCommand = new ChangeVersionsStrategyCommand(versionsManager);
 	
 	@Test

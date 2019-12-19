@@ -9,7 +9,6 @@ public class CommandFactory {
 	private DocumentManager documentManager;
 	private VersionsManager versionsManager;
 	private LatexEditorController latexEditorController;
-	private Document currentDocument;//possible remove
 	
 	
 	public CommandFactory(VersionsManager versionsManager,LatexEditorController latexEditorController,
@@ -17,7 +16,6 @@ public class CommandFactory {
 		super();
 		this.versionsManager = versionsManager;
 		this.latexEditorController = latexEditorController;
-		this.currentDocument = currentDocument;//possible remove
 		documentManager = new DocumentManager();
 	}
 
@@ -36,7 +34,7 @@ public class CommandFactory {
 			return new DisableVersionsManagementCommand(versionsManager);
 		}
 		if(type.equals("edit")) {
-			return new EditCommand(latexEditorController,currentDocument);
+			return new EditCommand(latexEditorController);
 		}
 		if(type.equals("enableVersionsManagement")) {
 			return new EnableVersionsManagementCommand(versionsManager);

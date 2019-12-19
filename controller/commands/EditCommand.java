@@ -6,8 +6,8 @@ import model.Document;
 public class EditCommand extends Command {
 	
 	
-	public EditCommand(LatexEditorController latexEditorController, Document currentDocument) {
-		super(latexEditorController,currentDocument);
+	public EditCommand(LatexEditorController latexEditorController) {
+		super(latexEditorController);
 	}
 
 

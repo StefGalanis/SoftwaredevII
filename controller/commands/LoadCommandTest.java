@@ -16,7 +16,7 @@ class LoadCommandTest {
 
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null);
-	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager);
+	private LatexEditorController latexEditorController = new LatexEditorController();
 	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController , versionsManager);
 	private LoadCommand loadCommand = new LoadCommand(latexEditorController);
 

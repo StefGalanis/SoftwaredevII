@@ -39,9 +39,7 @@ public class OpeningWindow {
 	 * Create the application.
 	 */
 	public OpeningWindow() {
-		VersionsStrategy versionsStrategy = new VolatileVersionsStrategy();
-		VersionsManager versionsManager = new VersionsManager(versionsStrategy);
-		LatexEditorController controller = new LatexEditorController(versionsManager);
+		LatexEditorController controller = new LatexEditorController();
 		this.controller = controller;
 		initialize();
 		frame.setVisible(true);

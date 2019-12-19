@@ -14,9 +14,9 @@ class RollbackToPreviousVersionCommandTest {
 
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null);
-	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager);
+	private LatexEditorController latexEditorController = new LatexEditorController();
 	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController,versionsManager);
-	private EditCommand editCommand = new EditCommand(latexEditorController,latexEditorController.getCurrentDocument() );
+	private EditCommand editCommand = new EditCommand(latexEditorController);
 	private EnableVersionsManagementCommand enableCommand = new EnableVersionsManagementCommand(versionsManager);
 	private RollbackToPreviousVersionCommand rollback = new RollbackToPreviousVersionCommand(versionsManager,latexEditorController);
 	

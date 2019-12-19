@@ -12,7 +12,7 @@ class CreateCommandTest {
 
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null);//possible remove field
-	private LatexEditorController latexEditorController = new LatexEditorController(versionsManager);
+	private LatexEditorController latexEditorController = new LatexEditorController();
 	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController, versionsManager);
 
 	@Test

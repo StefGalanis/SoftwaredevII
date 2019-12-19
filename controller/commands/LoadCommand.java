@@ -33,8 +33,8 @@ public class LoadCommand extends Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		currentDocument = new Document();
-		currentDocument.setContents(fileContents);
+		
+		latexEditorController.setDocumentContents(fileContents);
 		
 		latexEditorController.setType("emptyTemplate");
 		
