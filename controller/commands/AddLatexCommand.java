@@ -1,23 +1,53 @@
 package controller.commands;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.util.HashMap;
+
 import javax.swing.JEditorPane;
 
 import controller.LatexEditorController;
+import model.Document;
 import model.VersionsManager;
-import view.LatexEditorView;
 
 public class AddLatexCommand extends Command  {
 	
+	private HashMap<String, String> latexCommands;
 	
 	public AddLatexCommand(LatexEditorController latexEditorController) {
-		super(latexEditorController);	
+		super(latexEditorController);
+		
+		latexCommands = new HashMap<String, String>();
+		
+		File[] latexCommandFiles = new File("LatexCommands").listFiles();
+		try {
+			for(File file : latexCommandFiles) {
+				 if (file.isFile()) {
+					 String latexCommandName = removeFileExtension(file.getName());
+					 
+					 FileInputStream fileInputStream = new FileInputStream(file);
+					 byte[] data = new byte[(int) file.length()];
+					 fileInputStream.read(data);
+					 fileInputStream.close();
+					 
+					 String contents = new String(data, "UTF-8");
+					 
+					 latexCommands.put(latexCommandName ,contents);
+				 }
+			}
+		}
+		catch(Exception e) {
+			System.err.format("Exception occurred trying to read .");
+		    e.printStackTrace();
+		}
 	}
 
 
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		//latexEditorController.
 		editContents();
 		latexEditorController.enact("edit");
 	}
@@ -28,58 +58,17 @@ public class AddLatexCommand extends Command  {
 		String contents = editorPane.getText();
 		String before = contents.substring(0, editorPane.getCaretPosition());
 		String after = contents.substring(editorPane.getCaretPosition());
+
+		contents = before + latexCommands.get(type) +after;
 		
-		if(type.equals("chapter")) {
-			contents = before + "\n\\chapter{...}"+"\n"+after;
-		}
-		else if(type.equals("section")) {
-			contents = before + "\n\\section{...}"+"\n"+after;
-		}
-		else if(type.equals("subsection")) {
-			contents = before + "\n\\subsection{...}"+"\n"+after;
-		}
-		else if(type.equals("subsubsection")) {
-			contents = before + "\n\\subsubsection{...}"+"\n"+after;
-		}
-		else if(type.equals("enumerate")) {
-			contents = before + 
-					"\\begin{enumerate}\n"+
-					"\\item ...\n"+
-					"\\item ...\n"+
-					"\\end{enumerate}\n"+after;
-		}
-		else if(type.equals("itemize")) {
-			contents = before + 
-					"\\begin{itemize}\n"+
-					"\\item ...\n"+
-					"\\item ...\n"+
-					"\\end{itemize}\n"+after;
-		}
-		else if(type.equals("table")) {
-			contents = before + 
-					"\\begin{table}\n"+
-					"\\caption{....}\\label{...}\n"+
-					"\\begin{tabular}{|c|c|c|}\n"+
-					"\\hline\n"+
-					"... &...&...\\\\\n"+
-					"... &...&...\\\\\n"+
-					"... &...&...\\\\\n"+
-					"\\hline\n"+
-					"\\end{tabular}\n"+
-					"\\end{table}\n"+after;
-		}
-		else if(type.equals("figure")) {
-			contents = before + 
-					"\\begin{figure}\n"+
-					"\\includegraphics[width=...,height=...]{...}\n"+
-					"\\caption{....}\\label{...}\n"+
-					"\\end{figure}\n"+after;
-;
-		}
 		latexEditorController.setText(contents);
-		//latexEditorController.enact("addLatex");
+		
 		editorPane.setText(contents);
 		latexEditorController.setEditorPane(editorPane);
+	}
+	
+	private String removeFileExtension(String fileName) {
+		return fileName.substring(0, fileName.lastIndexOf("."));
 	}
 
 }

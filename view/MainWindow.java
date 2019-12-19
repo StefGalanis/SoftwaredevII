@@ -26,62 +26,6 @@ public class MainWindow {
 	private JEditorPane editorPane = new JEditorPane();
 	private LatexEditorController latexEditorController;
 	
-	public void editContents(String type) {
-		String contents = editorPane.getText();
-		String before = contents.substring(0, editorPane.getCaretPosition());
-		String after = contents.substring(editorPane.getCaretPosition());
-		
-		if(type.equals("chapter")) {
-			contents = before + "\n\\chapter{...}"+"\n"+after;
-		}
-		else if(type.equals("section")) {
-			contents = before + "\n\\section{...}"+"\n"+after;
-		}
-		else if(type.equals("subsection")) {
-			contents = before + "\n\\subsection{...}"+"\n"+after;
-		}
-		else if(type.equals("subsubsection")) {
-			contents = before + "\n\\subsubsection{...}"+"\n"+after;
-		}
-		else if(type.equals("enumerate")) {
-			contents = before + 
-					"\\begin{enumerate}\n"+
-					"\\item ...\n"+
-					"\\item ...\n"+
-					"\\end{enumerate}\n"+after;
-		}
-		else if(type.equals("itemize")) {
-			contents = before + 
-					"\\begin{itemize}\n"+
-					"\\item ...\n"+
-					"\\item ...\n"+
-					"\\end{itemize}\n"+after;
-		}
-		else if(type.equals("table")) {
-			contents = before + 
-					"\\begin{table}\n"+
-					"\\caption{....}\\label{...}\n"+
-					"\\begin{tabular}{|c|c|c|}\n"+
-					"\\hline\n"+
-					"... &...&...\\\\\n"+
-					"... &...&...\\\\\n"+
-					"... &...&...\\\\\n"+
-					"\\hline\n"+
-					"\\end{tabular}\n"+
-					"\\end{table}\n"+after;
-		}
-		else if(type.equals("figure")) {
-			contents = before + 
-					"\\begin{figure}\n"+
-					"\\includegraphics[width=...,height=...]{...}\n"+
-					"\\caption{....}\\label{...}\n"+
-					"\\end{figure}\n"+after;
-;
-		}
-		latexEditorController.setText(contents);
-		latexEditorController.enact("addLatex");
-		editorPane.setText(contents);
-	}
 	/**
 	 * Launch the application.
 	 */
@@ -185,7 +129,8 @@ public class MainWindow {
 		
 		addChapter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				editContents("chapter");
+				setCommandExecutionData("chapter");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		mnCommands.add(addChapter);
@@ -199,7 +144,8 @@ public class MainWindow {
 		JMenuItem mntmAddSection = new JMenuItem("Add section");
 		mntmAddSection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("section");
+				setCommandExecutionData("section");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		addSection.add(mntmAddSection);
@@ -207,7 +153,8 @@ public class MainWindow {
 		JMenuItem mntmAddSubsection = new JMenuItem("Add subsection");
 		mntmAddSubsection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("subsection");
+				setCommandExecutionData("subsection");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		addSection.add(mntmAddSubsection);
@@ -215,7 +162,8 @@ public class MainWindow {
 		JMenuItem mntmAddSubsubsection = new JMenuItem("Add subsubsection");
 		mntmAddSubsubsection.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("subsubsection");
+				setCommandExecutionData("subsubsection");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		addSection.add(mntmAddSubsubsection);
@@ -226,7 +174,8 @@ public class MainWindow {
 		JMenuItem mntmItemize = new JMenuItem("Itemize");
 		mntmItemize.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("itemize");
+				setCommandExecutionData("itemize");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		addEnumerationList.add(mntmItemize);
@@ -234,7 +183,8 @@ public class MainWindow {
 		JMenuItem mntmEnumerate = new JMenuItem("Enumerate");
 		mntmEnumerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("enumerate");
+				setCommandExecutionData("enumerate");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		addEnumerationList.add(mntmEnumerate);
@@ -242,7 +192,8 @@ public class MainWindow {
 		JMenuItem addTable = new JMenuItem("Add table");
 		addTable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				editContents("table");
+				setCommandExecutionData("table");
+				latexEditorController.enact("addLatex");
 			}
 		});
 		mnCommands.add(addTable);
