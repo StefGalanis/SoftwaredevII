@@ -14,9 +14,7 @@ public class EditCommand extends Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		//System.out.println(latexEditorView.getText());
 		saveContents();
-		//System.out.println(latexEditorView.getCurrentDocument().getContents());
 	}
 
 	public void saveContents() {

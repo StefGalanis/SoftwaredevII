@@ -16,7 +16,6 @@ public class RollbackToPreviousVersionCommand extends Command {
 	public void execute() {
 		// TODO Auto-generated method stub
 		Document doc = versionsManager.rollback();
-		System.out.print(doc.getContents());
 		latexEditorController.setCurrentDocument(doc);
 		
 	}

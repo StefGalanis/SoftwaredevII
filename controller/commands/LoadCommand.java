@@ -14,13 +14,6 @@ public class LoadCommand extends Command {
 		super(latexEditorController);	
 	}
 
-	public VersionsManager getVersionsManager() {
-		return versionsManager;
-	}//possible remove of method
-
-	public void setVersionsManager(VersionsManager versionsManager) {
-		this.versionsManager = versionsManager;
-	}//possible remove of method
 
 	@Override
 	public void execute() {
