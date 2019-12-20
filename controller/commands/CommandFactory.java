@@ -28,7 +28,7 @@ public class CommandFactory {
 			return new ChangeVersionsStrategyCommand(versionsManager);
 		}
 		if(type.equals("create")) {
-			return new CreateCommand(documentManager,latexEditorController,versionsManager);
+			return new CreateDocumentCommand(documentManager,latexEditorController,versionsManager);
 		}
 		if(type.equals("disableVersionsManagement")) {
 			return new DisableVersionsManagementCommand(versionsManager);
@@ -53,6 +53,9 @@ public class CommandFactory {
 		}
 		if(type.equals("atbashDecryption")) {
 			return new AtbashDecryptionCommand(latexEditorController);
+		}
+		if(type.equals("rot13Encryption")) {
+			return new Rot13EncryptionCommand(latexEditorController);
 		}
 		if(type.equals("loadEncryptedFile")) {
 			return new LoadEncryptedFileCommand(latexEditorController);

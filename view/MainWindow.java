@@ -308,7 +308,7 @@ public class MainWindow {
 		JMenuItem atbashEncryption = new JMenuItem("Atbash");
 		mnEncryption.add(atbashEncryption);
 		
-		JMenuItem rot13Encryption = new JMenuItem("Rot-13");
+		JMenuItem rot13Encryption = new JMenuItem("ROT-13");
 		mnEncryption.add(rot13Encryption);
 		
 		atbashEncryption.addActionListener(new ActionListener() {

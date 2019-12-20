@@ -11,7 +11,7 @@ import controller.commands.AddLatexCommand;
 import controller.commands.ChangeVersionsStrategyCommand;
 import controller.commands.Command;
 import controller.commands.CommandFactory;
-import controller.commands.CreateCommand;
+import controller.commands.CreateDocumentCommand;
 import controller.commands.DisableVersionsManagementCommand;
 import controller.commands.EditCommand;
 import controller.commands.EnableVersionsManagementCommand;

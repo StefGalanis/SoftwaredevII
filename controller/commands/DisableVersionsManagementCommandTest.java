@@ -16,7 +16,7 @@ class DisableVersionsManagementCommandTest {
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null);
 	private LatexEditorController latexEditorController = new LatexEditorController();
-	private CreateCommand createCommand = new CreateCommand(documentManager, latexEditorController , versionsManager);
+	private CreateDocumentCommand createCommand = new CreateDocumentCommand(documentManager, latexEditorController , versionsManager);
 	private EditCommand editCommand = new EditCommand(latexEditorController);
 	private DisableVersionsManagementCommand disableCommand = new DisableVersionsManagementCommand(versionsManager);
 

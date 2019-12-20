@@ -40,10 +40,7 @@ public class AddLatexCommand extends Command  {
 		}
 	}
 
-
-	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
 		editContents();
 		latexEditorController.enact("edit");
 	}

@@ -17,12 +17,10 @@ public class LoadCommand extends Command {
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
 		loadFromFile();
 	}
 	
 	public void loadFromFile() {
-		// TODO Auto-generated method stub
 		String fileContents = "";
 		try {
 			Scanner scanner = new Scanner(new FileInputStream(latexEditorController.getFilename()));
@@ -30,7 +28,6 @@ public class LoadCommand extends Command {
 				fileContents = fileContents + scanner.nextLine() + "\n";
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
