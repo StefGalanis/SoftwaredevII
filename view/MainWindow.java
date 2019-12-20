@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -97,7 +98,32 @@ public class MainWindow {
 		});
 		mnFile.add(mntmLoadFile);
 		
-		JMenuItem mntmSaveFile = new JMenuItem("Save file");
+		JMenuItem loadEncryptedFile = new JMenuItem("Load Encrypted File");
+		mnFile.add(loadEncryptedFile);
+		
+		loadEncryptedFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser filechooser = new JFileChooser();
+				int option = filechooser.showOpenDialog(null);
+				if(option == JFileChooser.APPROVE_OPTION) {
+					String filename = filechooser.getSelectedFile().toString();
+					
+					latexEditorController.setFilename(filename);//fix
+					latexEditorController.enact("loadEncryptedFile");
+					mnCommands.setEnabled(true);
+					addChapter.setEnabled(true);
+					if(latexEditorController.getType().equals("letterTemplate")) {
+						mnCommands.setEnabled(false);
+					}
+					if(latexEditorController.getType().equals("articleTemplate")) {
+						addChapter.setEnabled(false);
+					}
+					editorPane.setText(latexEditorController.getDocumentContents());
+				}
+			}
+		});
+		
+		JMenuItem mntmSaveFile = new JMenuItem("Save As...");
 		mntmSaveFile.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JFileChooser filechooser = new JFileChooser();
@@ -116,6 +142,11 @@ public class MainWindow {
 		mnFile.add(mntmSaveFile);
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		mnFile.add(mntmExit);
 		
 		
@@ -215,7 +246,7 @@ public class MainWindow {
 		menuStable.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				latexEditorController.setStrategy("stable");
-				if(latexEditorController.isVersionsManagerEnabled() == false) {//isVersionManagerEnabled
+				if(latexEditorController.isVersionsManagerEnabled() == false) {
 					latexEditorController.enact("enableVersionsManagement");
 				}
 				else {
@@ -304,30 +335,7 @@ public class MainWindow {
 			}
 		});
 		
-		JMenuItem loadEncryptedFile = new JMenuItem("Load Encrypted File");
-		mnFile.add(loadEncryptedFile);
 		
-		loadEncryptedFile.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				JFileChooser filechooser = new JFileChooser();
-				int option = filechooser.showOpenDialog(null);
-				if(option == JFileChooser.APPROVE_OPTION) {
-					String filename = filechooser.getSelectedFile().toString();
-					
-					latexEditorController.setFilename(filename);//fix
-					latexEditorController.enact("loadEncryptedFile");
-					mnCommands.setEnabled(true);
-					addChapter.setEnabled(true);
-					if(latexEditorController.getType().equals("letterTemplate")) {
-						mnCommands.setEnabled(false);
-					}
-					if(latexEditorController.getType().equals("articleTemplate")) {
-						addChapter.setEnabled(false);
-					}
-					editorPane.setText(latexEditorController.getDocumentContents());
-				}
-			}
-		});
 		
 	}
 	

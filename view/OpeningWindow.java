@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+//import com.sun.tools.javac.main.Option;
+
 import controller.LatexEditorController;
 import model.VersionsManager;
 import model.strategies.VersionsStrategy;
@@ -67,8 +69,16 @@ public class OpeningWindow {
 		JButton btnOpenExistingDocument = new JButton("Open Existing Document");
 		btnOpenExistingDocument.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser chooser = new JFileChooser();
-				chooser.showOpenDialog(null);
+				JFileChooser filechooser = new JFileChooser();
+				int option = filechooser.showOpenDialog(null);
+				if(option == JFileChooser.APPROVE_OPTION) {
+					String filename = filechooser.getSelectedFile().toString();
+					controller.setFilename(filename);
+					controller.enact("load");
+					MainWindow mainWindow = new MainWindow(controller);
+					
+					frame.dispose();
+				}
 			}
 		});
 		btnOpenExistingDocument.setBounds(89, 92, 278, 36);

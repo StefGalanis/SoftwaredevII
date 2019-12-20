@@ -48,7 +48,7 @@ public class AtbashDecryptionCommand extends Command {
                 }
             } 
         }
-        System.out.println(dencryptedText);
+        //System.out.println(dencryptedText);
         latexEditorController.setDocumentContents(dencryptedText);
 	}
 	

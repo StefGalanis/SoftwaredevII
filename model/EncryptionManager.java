@@ -1,5 +1,7 @@
 package model;
 
-public class EncryptionManager {
+import model.strategies.EncryptionType;
 
+public class EncryptionManager {
+	private EncryptionType encryptionType;
 }

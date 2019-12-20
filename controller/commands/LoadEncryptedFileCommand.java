@@ -20,11 +20,11 @@ public class LoadEncryptedFileCommand extends Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		loadFromFile();
-		latexEditorController.enact("atbashDecryption");
+		loadEncryptedFile();
+		
 	}
 	
-	public void loadFromFile() {
+	public void loadEncryptedFile() {
 		// TODO Auto-generated method stub
 		String fileContents = "";
 		try {
@@ -39,8 +39,11 @@ public class LoadEncryptedFileCommand extends Command {
 		
 		latexEditorController.setDocumentContents(fileContents);
 		
-		latexEditorController.setType("emptyTemplate");
+		latexEditorController.enact("atbashDecryption");
 		
+		fileContents = latexEditorController.getDocumentContents();
+		latexEditorController.setType("emptyTemplate");
+		System.out.println(fileContents);
 		fileContents = fileContents.trim();
 		if(fileContents.startsWith("\\documentclass[11pt,twocolumn,a4paper]{article}")) {
 			latexEditorController.setType("articleTemplate");
