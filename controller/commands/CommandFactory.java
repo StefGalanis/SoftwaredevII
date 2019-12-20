@@ -48,6 +48,15 @@ public class CommandFactory {
 		if(type.equals("save")) {
 			return new SaveCommand(latexEditorController);
 		}
+		if(type.equals("atbashEncryption")) {
+			return new AtbashEncryptionCommand(latexEditorController);
+		}
+		if(type.equals("atbashDecryption")) {
+			return new AtbashDecryptionCommand(latexEditorController);
+		}
+		if(type.equals("loadEncryptedFile")) {
+			return new LoadEncryptedFileCommand(latexEditorController);
+		}
 		return null;
 	}
 }

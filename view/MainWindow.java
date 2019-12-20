@@ -270,6 +270,65 @@ public class MainWindow {
 		scrollPane.setViewportView(editorPane);
 		
 		editorPane.setText(latexEditorController.getDocumentContents());
+		
+		JMenu mnEncryption = new JMenu("Encryption");
+		menuBar.add(mnEncryption);
+		
+		JMenuItem atbashEncryption = new JMenuItem("Atbash");
+		mnEncryption.add(atbashEncryption);
+		
+		JMenuItem rot13Encryption = new JMenuItem("Rot-13");
+		mnEncryption.add(rot13Encryption);
+		
+		atbashEncryption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				latexEditorController.enact("atbashEncryption");
+			}
+		});
+
+		rot13Encryption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				latexEditorController.enact("rot13Encryption");
+			}
+		});
+		
+		JMenu mnDecryption = new JMenu("Decryption");
+		menuBar.add(mnDecryption);
+		
+		JMenuItem atbashDecryption = new JMenuItem("Atbash");
+		mnDecryption.add(atbashDecryption);
+		
+		atbashDecryption.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				latexEditorController.enact("atbashDecryption");
+			}
+		});
+		
+		JMenuItem loadEncryptedFile = new JMenuItem("Load Encrypted File");
+		mnFile.add(loadEncryptedFile);
+		
+		loadEncryptedFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser filechooser = new JFileChooser();
+				int option = filechooser.showOpenDialog(null);
+				if(option == JFileChooser.APPROVE_OPTION) {
+					String filename = filechooser.getSelectedFile().toString();
+					
+					latexEditorController.setFilename(filename);//fix
+					latexEditorController.enact("loadEncryptedFile");
+					mnCommands.setEnabled(true);
+					addChapter.setEnabled(true);
+					if(latexEditorController.getType().equals("letterTemplate")) {
+						mnCommands.setEnabled(false);
+					}
+					if(latexEditorController.getType().equals("articleTemplate")) {
+						addChapter.setEnabled(false);
+					}
+					editorPane.setText(latexEditorController.getDocumentContents());
+				}
+			}
+		});
+		
 	}
 	
 	public void setCommandExecutionData(String addLatexCommandType) {

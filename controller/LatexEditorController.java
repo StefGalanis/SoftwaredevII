@@ -35,23 +35,6 @@ public class LatexEditorController{
 	private String addLatexCommandType;
 	private JEditorPane editorPane;
 	
-	
-	
-	public JEditorPane getEditorPane() {
-		return editorPane;
-	}
-
-	public void setEditorPane(JEditorPane editorPane) {
-		this.editorPane = editorPane;
-	}
-
-	public String getAddLatexCommandType() {
-		return addLatexCommandType;
-	}
-
-	public void setAddLatexCommandType(String addLatexCommandType) {
-		this.addLatexCommandType = addLatexCommandType;
-	}
 
 	public LatexEditorController() {
 		
@@ -78,6 +61,22 @@ public class LatexEditorController{
 			System.err.format("Exception occurred trying to read '%s'.", commandsFile);
 		    e.printStackTrace();
 		}
+	}
+	
+	public JEditorPane getEditorPane() {
+		return editorPane;
+	}
+
+	public void setEditorPane(JEditorPane editorPane) {
+		this.editorPane = editorPane;
+	}
+
+	public String getAddLatexCommandType() {
+		return addLatexCommandType;
+	}
+
+	public void setAddLatexCommandType(String addLatexCommandType) {
+		this.addLatexCommandType = addLatexCommandType;
 	}
 	
 	public void enact(String command) {
@@ -140,23 +139,19 @@ public class LatexEditorController{
 	}
 
 	public VersionsManager getVersionsManager() {
-		// TODO Auto-generated method stub
 		return versionsManager;
 	}
 
-	public void setVersionsManager(VersionsManager versionsManager2) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public String getDocumentContents() {
-		// TODO Auto-generated method stub
 		return currentDocument.getContents();
 	}
 	
 	public void setDocumentContents(String contents) {
-		// TODO Auto-generated method stub
 		currentDocument.setContents(contents);
+	}
+
+	public void setVersionsManager(VersionsManager versionsManager) {
+		this.versionsManager = versionsManager;		
 	}
 
 }
