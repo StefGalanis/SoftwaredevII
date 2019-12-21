@@ -8,7 +8,7 @@ import controller.LatexEditorController;
 import model.DocumentManager;
 import model.VersionsManager;
 
-class CreateCommandTest {
+class CreateDocumentCommandTest {
 
 	private DocumentManager documentManager = new DocumentManager();
 	private VersionsManager versionsManager = new VersionsManager(null);//possible remove field

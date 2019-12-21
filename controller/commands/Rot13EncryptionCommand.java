@@ -12,10 +12,10 @@ public class Rot13EncryptionCommand extends Command {
 	}
 
 	public void execute() {
-		tempname();
+		encrypt();
 	}
 	
-	private void tempname() {
+	private void encrypt() {
 		
 		contentToEncrypt = latexEditorController.getDocumentContents();
 		encryptedContent = "";
@@ -41,6 +41,7 @@ public class Rot13EncryptionCommand extends Command {
 				encryptedContent += c ;
 			}
         }
-		System.out.print(encryptedContent);
+		latexEditorController.setDocumentContents(encryptedContent);
+		//System.out.print(encryptedContent);
 	}
 }

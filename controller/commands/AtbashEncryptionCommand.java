@@ -48,28 +48,6 @@ public class AtbashEncryptionCommand extends Command{
         
         latexEditorController.setDocumentContents(encryptedText);
         System.out.println("Encrypted Text: " + encryptedText);
-       /*
-        contentsToArrayOfChar = new char[encryptedText.length()];
-        contentsToArrayOfChar = encryptedText.toCharArray();
-        
-        String dencryText = "";
-        for ( char character : contentsToArrayOfChar) {
-            if(character < (char)65){
-                dencryText += character;
-            } else {
-                int count = 0;
-                for (int j = 0; j < reverseAlpa.length(); j++) {
-                    if (encryText.charAt(i) == reverseAlpa.charAt(j)){
-                        dencryText += alpa.charAt(j);
-                        break;
-                    }
-                } // inner for
-            } // if-else
-        } // for
-        
-
-        System.out.println("Decrypted Text: " + dencryText);
-       */ 
 	}
 	
 	private void computeReverseAlphabet() {

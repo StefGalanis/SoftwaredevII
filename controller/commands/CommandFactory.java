@@ -57,6 +57,9 @@ public class CommandFactory {
 		if(type.equals("rot13Encryption")) {
 			return new Rot13EncryptionCommand(latexEditorController);
 		}
+		if(type.equals("rot13Decryption")) {
+			return new Rot13DecryptionCommand(latexEditorController);
+		}
 		if(type.equals("loadEncryptedFile")) {
 			return new LoadEncryptedFileCommand(latexEditorController);
 		}
